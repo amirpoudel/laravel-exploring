@@ -12,6 +12,7 @@ class AttendanceController extends Controller
     //get attendance
 
     public function index(Request $request){
+
         return response()->json([
             'status' => 'success',
             'message' => 'Attendance fetched successfully',
@@ -21,7 +22,12 @@ class AttendanceController extends Controller
 
     public function store(Request $request){
   
-        
+        $attendance = Attendance::create([
+            'rfid'=> $request->rfid,
+            'time'=> $request->time,
+            'date'=> $request->date
+        ]);
+
         return response()->json([
             ' status' => 'success',
             'statusCode'=> 201,
